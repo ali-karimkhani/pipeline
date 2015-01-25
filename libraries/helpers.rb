@@ -64,9 +64,7 @@ module Pipeline
     def each_cookbook_in_berksfile_of_repo(name, &block)
       require 'berkshelf'
       berksfile_from_repo(name).list.each do |cookbook|
-        next if cookbook.location.nil?
-
-        block.call cookbook
+        block.call cookbook unless cookbook.location.nil?
       end
     rescue LoadError
       Chef::Log.warn 'Berkshelf not available'
