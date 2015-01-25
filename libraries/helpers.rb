@@ -43,6 +43,13 @@ module Pipeline
   module Helpers
     Chef::Recipe.send :include, self
 
+    def path_to_config_for(name)
+      file_cache_path = Chef::Config[:file_cache_path]
+      file_name = "#{name}-config.xml"
+
+      ::File.join file_cache_path, file_name
+    end
+
     def each_chef_org(&block)
       if Chef::Config[:solo]
         Chef::Log.warn 'This recipe uses search;' \

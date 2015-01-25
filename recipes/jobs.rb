@@ -1,6 +1,6 @@
 # set up chef-repo job per chef-repo
 each_chef_repo do |repo|
-  xml = File.join(Chef::Config[:file_cache_path], "#{repo['name']}-config.xml")
+  xml = path_to_config_for repo['name']
 
   template xml do
     source "job-config.xml.erb"
@@ -30,7 +30,7 @@ each_chef_repo do |repo|
     
     berksfile.list.reject{|c| c.location == nil}.each do |cookbook|
       Chef::Log.info(cookbook.location.to_s)
-      xml = File.join(Chef::Config[:file_cache_path], "#{cookbook.name}-config.xml")
+      xml = path_to_config_for cookbook.name
 
       template xml do
         source "job-config.xml.erb"
