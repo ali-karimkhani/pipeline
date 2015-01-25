@@ -96,13 +96,6 @@ module Pipeline
       end
     end
 
-    def path_to_config(name)
-      file_cache_path = Chef::Config[:file_cache_path]
-      file_name = "#{name}-config.xml"
-
-      ::File.join file_cache_path, file_name
-    end
-
     private
 
     def berksfile_from_repo(name)
@@ -121,6 +114,13 @@ module Pipeline
     def path_to_berksfile_of_repo(name)
       "#{node['jenkins']['master']['home']}/jobs/#{name}/workspace" \
         '/Berksfile'
+    end
+
+    def path_to_config(name)
+      file_cache_path = Chef::Config[:file_cache_path]
+      file_name = "#{name}-config.xml"
+
+      ::File.join file_cache_path, file_name
     end
   end
 end
