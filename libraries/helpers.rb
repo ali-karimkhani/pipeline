@@ -43,13 +43,6 @@ module Pipeline
   module Helpers
     Chef::Recipe.send :include, self
 
-    def path_to_config_for(name)
-      file_cache_path = Chef::Config[:file_cache_path]
-      file_name = "#{name}-config.xml"
-
-      ::File.join file_cache_path, file_name
-    end
-
     def each_chef_org(&block)
       if Chef::Config[:solo]
         Chef::Log.warn 'This recipe uses search;' \
@@ -59,8 +52,59 @@ module Pipeline
       end
     end
 
+    def each_cookbook_in_berksfile_of_repo(name, &block)
+      require 'berkshelf'
+      berksfile_from_repo(name).list.each do |cookbook|
+        next if cookbook.location.nil?
+
+        block.call cookbook
+      end
+    rescue LoadError
+      Chef::Log.warn 'Berkshelf not available'
+    end
+
     def each_chef_repo(&block)
-      each_chef_org do |org| org['chef-repos'].each(&block) end
+      each_chef_org do |org| org['chef_repos'].each(&block) end
+    end
+
+    def create_jenkins_job(name, git_url, build_command)
+      config_path = path_to_config name
+
+      template config_path do
+        source 'job-config.xml.erb'
+        variables git_url: git_url, build_command: build_command
+      end
+
+      jenkins_job name do
+        config config_path
+      end
+    end
+
+    def path_to_config(name)
+      file_cache_path = Chef::Config[:file_cache_path]
+      file_name = "#{name}-config.xml"
+
+      ::File.join file_cache_path, file_name
+    end
+
+    private
+
+    def berksfile_from_repo(name)
+      berksfile_path = path_to_berksfile_of_repo name
+
+      Berkshelf::Berksfile.from_file(berksfile_path).tap do |berksfile|
+        install_berksfile berskfile
+      end
+    end
+
+    def install_berksfile(berksfile)
+      Chef::Log.info 'Installing contents of Berksfile...'
+      berskfile.lockfile.present? ? berksfile.update : berksfile.install
+    end
+
+    def path_to_berksfile_of_repo(name)
+      "#{node['jenkins']['master']['home']}/jobs/#{name}/workspace" \
+        '/Berksfile'
     end
   end
 end
