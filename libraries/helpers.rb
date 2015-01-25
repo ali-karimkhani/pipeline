@@ -38,3 +38,22 @@ module ChefZeroCookbook
       end
   end
 end
+
+module Pipeline
+  module Helpers
+    Chef::Recipe.send :include, self
+
+    def each_chef_org(&block)
+      if Chef::Config[:solo]
+        Chef::Log.warn 'This recipe uses search;' \
+                         'Chef solo does not support search'
+      else
+        search(:chef_orgs, '*:*').each(&block)
+      end
+    end
+
+    def each_chef_repo(&block)
+      each_chef_org do |org| org['chef-repos'].each(&block) end
+    end
+  end
+end
