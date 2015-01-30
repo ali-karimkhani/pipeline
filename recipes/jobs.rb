@@ -11,8 +11,7 @@ else
         source "job-config.xml.erb"
          variables(
            :git_url => repo['url'],
-           :build_command => '_knife_commands.sh.erb',
-           :local_mode => Chef::Config[:local_mode]
+           :build_command => '_knife_commands.sh.erb'
          )
       end
 
@@ -20,20 +19,20 @@ else
       jenkins_job repo['name'] do
         config xml
       end
-
+      
       begin
         require 'berkshelf'
-
+        
         berksfile = Berkshelf::Berksfile.from_file("#{node['jenkins']['master']['home']}/jobs/#{repo['name']}/workspace/Berksfile")
-
+        
         Chef::Log.info("running install on Berksfile...")
-
+        
         begin
           berksfile.update
         rescue
           berksfile.install
         end
-
+        
         berksfile.list.reject{|c| c.location == nil}.each do |cookbook|
           Chef::Log.info(cookbook.location.to_s)
           xml = File.join(Chef::Config[:file_cache_path], "#{cookbook.name}-config.xml")
@@ -57,3 +56,5 @@ else
     end
   end
 end
+
+
