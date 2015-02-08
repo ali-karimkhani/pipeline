@@ -6,12 +6,12 @@ module Pipeline
     # executing Chef in solo mode
     #
     # @param [Proc] block
-    def each_chef_org(&block)
+    def chef_orgs
       if Chef::Config[:solo]
         Chef::Log.warn 'This recipe uses search;' \
                          'Chef solo does not support search'
       else
-        search(:chef_orgs, '*:*').each(&block)
+        search(:chef_orgs, '*:*')
       end
     end
 
@@ -20,21 +20,23 @@ module Pipeline
     #
     # @param [String] name
     # @param [Proc] block
-    def each_cookbook_in_berksfile_of_repo(name, &block)
+    def cookbooks_in_berksfile_of_repo(name)
       require 'berkshelf'
-      berksfile_from_repo(name).list.each do |cookbook|
-        block.call cookbook unless cookbook.location.nil?
+      berksfile_from_repo(name).list.reject do |cookbook|
+        cookbook.location.nil?
       end
     rescue LoadError
       Chef::Log.warn 'Berkshelf not available'
+
+      []
     end
 
     # Enumerate each repo of each organization in the Chef Server to the given
     # block
     #
     # @param [proc] block
-    def each_chef_repo(&block)
-      each_chef_org do |org| org['chef_repos'].each(&block) end
+    def chef_repos
+      chef_orgs.map do |org| org['chef_repos'] end.flatten
     end
 
     # Declare Chef resources for a job to be managed in Jenkins

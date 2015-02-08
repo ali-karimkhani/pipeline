@@ -25,7 +25,7 @@ end
 
 # search data bag chef_orgs for each chef server or org
 # write out knife and pem
-each_chef_org do |org|
+chef_orgs.each do |org|
   template "#{node['jenkins']['master']['home']}/.chef/knife.rb" do
     cookbook 'pipeline'
     source "knife.rb.erb"
