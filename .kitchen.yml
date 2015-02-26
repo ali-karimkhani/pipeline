@@ -32,7 +32,6 @@ suites:
     run_list:
       - recipe[pipeline_test]
       - recipe[emacs]
-      - recipe[resolver]
       - recipe[pipeline::jenkins]
       - recipe[pipeline::chefdk]
       - recipe[chef-zero]
@@ -41,10 +40,6 @@ suites:
     attributes:
       chef-zero:
         start: true
-      resolver:
-        nameservers:
-          - 8.8.8.8
-          - 8.8.4.4
       pipeline:
         template:
           cookbook: pipeline_test
