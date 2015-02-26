@@ -44,12 +44,12 @@ module Pipeline
     # @param [String] name
     # @param [String] git_url
     # @param [String] build_command
-    def create_jenkins_job(name, git_url, build_command)
+    def create_jenkins_job(name, git_url, build_command, cookbook)
       config_path = path_to_config name
 
       template config_path do
         source 'job-config.xml.erb'
-        variables git_url: git_url, build_command: build_command
+        variables git_url: git_url, build_command: build_command, cookbook: cookbook
       end
 
       jenkins_job name do
