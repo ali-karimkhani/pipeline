@@ -20,6 +20,7 @@ The pipeline is Jenkins based and relies on a git repository of your Chef items 
   - Contains all the cookbooks in your project.
   - Used to generate cookbook jobs for cookbooks that need testing
   - Used to upload community cookbooks that don't need testing
+  - assumes there is a 'community' or external group of cookbooks you want to deliver to the Chef server
 - **environments/:** Directory of environment files in a format accepted by `knife upload`
 - **roles/:** Directory of role files in a format accepted by `knife upload`
 - **data_bags_/:** Directory of data bag files in a format accepted by `knife upload`
@@ -48,6 +49,26 @@ From the command line, run the following twice:
 
 Now check out your local CD pipeline demo on http://localhost:9090
 
+### Example Berksfile from [https://github.com/stephenlauck/pipeline-example-chef-repo/blob/master/Berksfile](https://github.com/stephenlauck/pipeline-example-chef-repo/blob/master/Berksfile)
+
+```
+source "https://supermarket.chef.io"
+
+group :community do
+  cookbook 'jenkins'
+  cookbook 'java'
+  cookbook 'apt'
+  cookbook 'yum'
+  cookbook 'emacs'
+  cookbook 'git'
+  cookbook 'chef-zero'
+  cookbook 'chef-dk'
+end
+
+cookbook 'pipeline', git: 'https://github.com/chef-solutions/pipeline.git'
+cookbook 'gitlab', git: 'https://github.com/chef-solutions/gitlab.git'
+
+```
 
 ### Production Notes
 
