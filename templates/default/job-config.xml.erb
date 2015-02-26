@@ -34,7 +34,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-        <%= render @build_command, :options => {} %>
+        <%= render @build_command, :cookbook => @cookbook, :options => { } %>
       </command>
     </hudson.tasks.Shell>
   </builders>
