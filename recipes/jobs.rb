@@ -9,5 +9,6 @@ chef_repos.each do |repo|
       cookbook.location.uri,
       '_cookbook_command.sh.erb', 
       node['pipeline']['template']['cookbook']
+    )
   end
 end

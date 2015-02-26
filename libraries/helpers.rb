@@ -63,13 +63,13 @@ module Pipeline
       berksfile_path = path_to_berksfile_of_repo name
 
       Berkshelf::Berksfile.from_file(berksfile_path).tap do |berksfile|
-        install_berksfile berskfile
+        install_berksfile berksfile
       end
     end
 
     def install_berksfile(berksfile)
       Chef::Log.info 'Installing contents of Berksfile...'
-      berskfile.lockfile.present? ? berksfile.update : berksfile.install
+      berksfile.lockfile.present? ? berksfile.update : berksfile.install
     end
 
     def path_to_berksfile_of_repo(name)
