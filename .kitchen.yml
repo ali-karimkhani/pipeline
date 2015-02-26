@@ -30,6 +30,7 @@ platforms:
 suites:
   - name: pipeline
     run_list:
+      - recipe[pipeline_test]
       - recipe[emacs]
       - recipe[resolver]
       - recipe[pipeline::jenkins]
@@ -44,3 +45,6 @@ suites:
         nameservers:
           - 8.8.8.8
           - 8.8.4.4
+      pipeline:
+        template:
+          cookbook: pipeline_test

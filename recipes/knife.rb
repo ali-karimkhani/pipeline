@@ -30,7 +30,7 @@ if Chef::Config[:solo]
 else
   search(:chef_orgs, "*:*").each do |org|
     template "#{node['jenkins']['master']['home']}/.chef/knife.rb" do
-      cookbook 'pipeline'
+      cookbook node['pipeline']['template']['cookbook']
       source "knife.rb.erb"
       owner node['jenkins']['master']['user']
       group node['jenkins']['master']['group']

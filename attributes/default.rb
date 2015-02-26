@@ -22,3 +22,5 @@ default['pipeline']['github']['server'] = "github.com"
 default['java']['jdk_version'] = '7'
 
 default['pipeline']['chefdk']['version'] = 'latest'
+
+default['pipeline']['template']['cookbook'] = 'pipeline'

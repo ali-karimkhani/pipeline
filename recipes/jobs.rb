@@ -9,9 +9,10 @@ else
 
       template xml do
         source "job-config.xml.erb"
-         variables(
-           :git_url => repo['url'],
-           :build_command => '_knife_commands.sh.erb'
+        variables(
+          :git_url => repo['url'],
+          :build_command => '_knife_commands.sh.erb',
+          :cookbook =>  node['pipeline']['template']['cookbook']
          )
       end
 
@@ -39,10 +40,11 @@ else
 
           template xml do
             source "job-config.xml.erb"
-             variables(
-               :git_url => cookbook.location.uri,
-               :build_command => '_cookbook_command.sh.erb'
-             )
+            variables(
+              :git_url => cookbook.location.uri,
+              :build_command => '_cookbook_command.sh.erb',
+              :cookbook =>  node['pipeline']['template']['cookbook']
+            )
           end
 
           # Create a jenkins job (default action is `:create`)
@@ -56,5 +58,3 @@ else
     end
   end
 end
-
-
