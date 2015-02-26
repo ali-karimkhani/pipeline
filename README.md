@@ -49,7 +49,9 @@ From the command line, run the following twice:
 
 Now check out your local CD pipeline demo on http://localhost:9090
 
-### Example Berksfile from [https://github.com/stephenlauck/pipeline-example-chef-repo/blob/master/Berksfile](https://github.com/stephenlauck/pipeline-example-chef-repo/blob/master/Berksfile)
+### Example Berksfile
+
+from [https://github.com/stephenlauck/pipeline-example-chef-repo/blob/master/Berksfile](https://github.com/stephenlauck/pipeline-example-chef-repo/blob/master/Berksfile)
 
 ```
 source "https://supermarket.chef.io"
