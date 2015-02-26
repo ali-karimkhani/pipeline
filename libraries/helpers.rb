@@ -44,12 +44,12 @@ module Pipeline
     # @param [String] name
     # @param [String] git_url
     # @param [String] build_command
-    def create_jenkins_job(name, git_url, build_command)
+    def create_jenkins_job(name, git_url, build_command, cookbook)
       config_path = path_to_config name
 
       template config_path do
         source 'job-config.xml.erb'
-        variables git_url: git_url, build_command: build_command
+        variables git_url: git_url, build_command: build_command, cookbook: cookbook
       end
 
       jenkins_job name do
@@ -63,13 +63,13 @@ module Pipeline
       berksfile_path = path_to_berksfile_of_repo name
 
       Berkshelf::Berksfile.from_file(berksfile_path).tap do |berksfile|
-        install_berksfile berskfile
+        install_berksfile berksfile
       end
     end
 
     def install_berksfile(berksfile)
       Chef::Log.info 'Installing contents of Berksfile...'
-      berskfile.lockfile.present? ? berksfile.update : berksfile.install
+      berksfile.lockfile.present? ? berksfile.update : berksfile.install
     end
 
     def path_to_berksfile_of_repo(name)

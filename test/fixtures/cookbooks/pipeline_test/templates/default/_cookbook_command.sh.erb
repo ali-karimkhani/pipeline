@@ -1,0 +1,12 @@
+export PATH="/opt/chefdk/embedded/bin:$PATH"
+
+if [ -f Berksfile.lock ];
+  then
+    berks update
+  else
+    berks install
+fi
+
+# foodcritic -f correctness .
+foodcritic -f any -f ~FC014 .
+berks upload
