@@ -36,5 +36,5 @@ end
 sudo 'jenkins' do
   user      "jenkins"
   nopasswd  true
-  commands  ['/usr/bin/chef-client']
+  commands  [node['pipeline']['chef_client_cmd']]
 end

@@ -24,3 +24,5 @@ default['java']['jdk_version'] = '7'
 default['pipeline']['chefdk']['version'] = 'latest'
 
 default['pipeline']['template']['cookbook'] = 'pipeline'
+
+default['pipeline']['chef_client_cmd'] = '/usr/bin/chef-client'

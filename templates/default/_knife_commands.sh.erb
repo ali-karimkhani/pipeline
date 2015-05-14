@@ -12,4 +12,4 @@ berks upload --only=<%= node['pipeline']['berkshelf']['external']['group'] %>
 knife upload roles environments data_bags --chef-repo-path .
 
 # build jobs for all cookbooks in Berksfile except <%= node['pipeline']['berkshelf']['external']['group'] %> group
-sudo chef-client
+sudo <%= node['pipeline']['chef_client_cmd'] %>
