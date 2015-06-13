@@ -30,6 +30,8 @@ node['pipeline']['jenkins']['plugins'].each do |p|
   jenkins_plugin p do
     action :install
     notifies :execute, "jenkins_command[safe-restart]", :delayed
+    retries 5 
+    retry_delay 5
   end
 end
 
