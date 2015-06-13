@@ -2,6 +2,12 @@ pipeline Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the pipeline cookbook.
 
+v2.3.0 (06/13/2015)
+------
+- use same chef-client path even with chefdk installed
+- fix errors when installing jenkins plugins
+- fix FC errors for syntax checking
+
 v2.1.0 (09/05/2014)
 ------
 - Add lint recipe to setup lint testing on jobs
