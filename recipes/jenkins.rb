@@ -18,9 +18,9 @@
 # limitations under the License.
 #
 
-include_recipe "java"
-include_recipe "jenkins::master"
-include_recipe "git"
+include_recipe 'java'
+include_recipe 'jenkins::master'
+include_recipe 'git'
 
 jenkins_command 'safe-restart' do
   action :nothing
@@ -29,14 +29,15 @@ end
 node['pipeline']['jenkins']['plugins'].each do |p|
   jenkins_plugin p do
     action :install
-    notifies :execute, "jenkins_command[safe-restart]", :delayed
-    retries 5 
+    notifies :execute, 'jenkins_command[safe-restart]', :delayed
+    retries 5
     retry_delay 5
+    not_if "ls plugins | grep #{p}"
   end
 end
 
 sudo 'jenkins' do
-  user      "jenkins"
-  nopasswd  true
-  commands  [node['pipeline']['chef_client_cmd']]
+  user 'jenkins'
+  nopasswd true
+  commands [node['pipeline']['chef_client_cmd']]
 end

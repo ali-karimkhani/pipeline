@@ -36,7 +36,7 @@ module Pipeline
     #
     # @param [proc] block
     def chef_repos
-      chef_orgs.map do |org| org['chef_repos'] end.flatten
+      chef_orgs.map { |org| org['chef_repos'] }.flatten
     end
 
     # Declare Chef resources for a job to be managed in Jenkins
