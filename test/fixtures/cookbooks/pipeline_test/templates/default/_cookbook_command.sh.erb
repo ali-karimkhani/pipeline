@@ -7,6 +7,13 @@ if [ -f Berksfile.lock ];
     berks install
 fi
 
-# foodcritic -f correctness .
-foodcritic -f any -f ~FC014 .
+# unit
+rspec --format documentation --color
+# lint
+foodcritic -f correctness .
+rubocop .
+# syntax
+knife cookbook test -o . -a
+
+# upload
 berks upload

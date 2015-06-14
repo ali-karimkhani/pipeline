@@ -5,12 +5,12 @@ action :create do
 
   template xml do
     source 'job-config.xml.erb'
-      variables(
-        :git_url => new_resource.git_url,
-        :build_command => new_resource.build_command
-      )
+    variables(
+      git_url: new_resource.git_url,
+      build_command: new_resource.build_command
+    )
   end
- 
+
   jenkins_job new_resource.job_name do
     config xml
   end
