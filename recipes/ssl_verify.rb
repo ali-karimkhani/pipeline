@@ -18,7 +18,6 @@
 # limitations under the License.
 #
 
-
 # manage ssl errors if needed or on proxy
 
 # create berkshelf
@@ -29,9 +28,9 @@ directory "#{node['jenkins']['master']['home']}/.berkshelf" do
 end
 
 file "#{node['jenkins']['master']['home']}/.berkshelf/config.json" do
- content <<-EOD
+  content <<-EOD
    {"ssl":{"verify": false }}
- EOD
+  EOD
   owner node['jenkins']['master']['user']
   group node['jenkins']['master']['user']
 end
@@ -39,7 +38,7 @@ end
 file "#{node['jenkins']['master']['home']}/.gitconfig" do
   content <<-EOD
   [http]
-        sslVerify = false 
+        sslVerify = false
   EOD
   owner node['jenkins']['master']['user']
   group node['jenkins']['master']['user']
