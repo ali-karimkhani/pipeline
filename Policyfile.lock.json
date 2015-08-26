@@ -15,7 +15,7 @@
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:chef-solutions/pipeline.git",
-        "revision": "beb713d0fbe76d4da26cd90c16ed0520dc74121a",
+        "revision": "052fde21ad2e81a32bc14d2764905c5ffb7f1543",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
