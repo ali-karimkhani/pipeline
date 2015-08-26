@@ -25,17 +25,17 @@ platforms:
 
 suites:
   - name: pipeline
-    # run_list:
-    #   - recipe[pipeline_test]
-    #   - recipe[emacs]
-    #   - recipe[pipeline::jenkins]
-    #   - recipe[pipeline::chefdk]
-    #   - recipe[chef-zero]
-    #   - recipe[pipeline::knife]
-    #   - recipe[pipeline::jobs]
-    # attributes:
-    #   chef-zero:
-    #     start: true
-    #   pipeline:
-    #     # template:
-    #     #   cookbook: pipeline_test
+    run_list:
+      - recipe[pipeline_test]
+      - recipe[emacs]
+      - recipe[pipeline::jenkins]
+      - recipe[pipeline::chefdk]
+      - recipe[chef-zero]
+      - recipe[pipeline::knife]
+      - recipe[pipeline::jobs]
+    attributes:
+      chef-zero:
+        start: true
+      pipeline:
+        # template:
+        #   cookbook: pipeline_test
