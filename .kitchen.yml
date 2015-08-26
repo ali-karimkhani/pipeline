@@ -13,7 +13,9 @@ driver_config:
 provisioner:
   name: policyfile_zero
   data_bags_path: test/fixtures/data_bags
+  require_chef_omnibus: true
   chef_omnibus_install_options: -P chefdk
+  chef_omnibus_root: /opt/chefdk
 
 platforms:
   # - name: ubuntu-14.04
@@ -25,17 +27,17 @@ platforms:
 
 suites:
   - name: pipeline
-    run_list:
-      - recipe[pipeline_test]
-      - recipe[emacs]
-      - recipe[pipeline::jenkins]
-      - recipe[pipeline::chefdk]
-      - recipe[chef-zero]
-      - recipe[pipeline::knife]
-      - recipe[pipeline::jobs]
-    attributes:
-      chef-zero:
-        start: true
-      pipeline:
-        # template:
-        #   cookbook: pipeline_test
+    # run_list:
+    #   - recipe[pipeline_test]
+    #   - recipe[emacs]
+    #   - recipe[pipeline::jenkins]
+    #   - recipe[pipeline::chefdk]
+    #   - recipe[chef-zero]
+    #   - recipe[pipeline::knife]
+    #   - recipe[pipeline::jobs]
+    # attributes:
+    #   chef-zero:
+    #     start: true
+    #   pipeline:
+    #     template:
+    #       cookbook: pipeline_test

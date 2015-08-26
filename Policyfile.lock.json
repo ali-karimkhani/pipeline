@@ -1,10 +1,30 @@
 {
-  "revision_id": "8f37113ebad909b532f934f42ece2955ac8c2414b014f4f4528274d4c72ac1d7",
+  "revision_id": "03ce4242d61e5a22c3123590bc4a94d72124dacc66b5807043737bad42f55bf0",
   "name": "pipeline",
   "run_list": [
     "recipe[pipeline::jenkins]"
   ],
   "cookbook_locks": {
+    "pipeline_test": {
+      "version": "0.1.0",
+      "identifier": "fc51b06ae69a591ad3315a216129fd0952854a4e",
+      "dotted_decimal_identifier": "71021512280676953.7550558313472297.278216481000014",
+      "source": "test/fixtures/cookbooks/pipeline_test",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:chef-solutions/pipeline.git",
+        "revision": "efb585d2d0938bf491ab1f29dad3283c1d092ddf",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/policyfile_update"
+        ]
+      },
+      "source_options": {
+        "path": "test/fixtures/cookbooks/pipeline_test"
+      }
+    },
     "pipeline": {
       "version": "2.3.0",
       "identifier": "5d273da8c74d6885d57c298950f84cc4fbf3a75e",
@@ -202,6 +222,10 @@
   "solution_dependencies": {
     "Policyfile": [
       [
+        "pipeline_test",
+        ">= 0.0.0"
+      ],
+      [
         "pipeline",
         "= 2.3.0"
       ],
@@ -308,6 +332,9 @@
           "chef-dk",
           ">= 0.0.0"
         ]
+      ],
+      "pipeline_test (0.1.0)": [
+
       ],
       "apt (2.8.2)": [
 
