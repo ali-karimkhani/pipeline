@@ -1,7 +1,8 @@
 {
-  "revision_id": "03ce4242d61e5a22c3123590bc4a94d72124dacc66b5807043737bad42f55bf0",
+  "revision_id": "2ccac9ba235af1d940e004b75dd089f719edeb943c72616960951b5e10527b5b",
   "name": "pipeline",
   "run_list": [
+    "recipe[pipeline::chefdk]",
     "recipe[pipeline::jenkins]"
   ],
   "cookbook_locks": {
@@ -14,7 +15,7 @@
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:chef-solutions/pipeline.git",
-        "revision": "efb585d2d0938bf491ab1f29dad3283c1d092ddf",
+        "revision": "beb713d0fbe76d4da26cd90c16ed0520dc74121a",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
