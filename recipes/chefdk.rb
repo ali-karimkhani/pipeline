@@ -1,1 +1,1 @@
-chef-ingredient 'chefdk'
+chef_ingredient 'chefdk'
