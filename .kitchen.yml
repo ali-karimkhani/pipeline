@@ -13,6 +13,7 @@ driver_config:
 provisioner:
   name: policyfile_zero
   data_bags_path: test/fixtures/data_bags
+  encrypted_data_bag_secret_key_path: 'secrets/fakey-mcfakerton'
 
 platforms:
   # - name: ubuntu-14.04

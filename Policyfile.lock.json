@@ -15,11 +15,11 @@
       "scm_info": {
         "scm": "git",
         "remote": null,
-        "revision": "4561e87cad10350666dd34d0cb9b3cf633822168",
+        "revision": "c6130d65ac9594297c37faf0791e02a552b5ff40",
         "working_tree_clean": false,
-        "published": true,
+        "published": false,
         "synchronized_remote_branches": [
-          "origin/add-delivery-config"
+
         ]
       },
       "source_options": {
