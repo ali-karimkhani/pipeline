@@ -11,14 +11,15 @@ default_source :community
 
 # run_list: chef-client will run these recipes in the order specified.
 run_list(
-  "pipeline::chefdk",
-  "pipeline::jenkins"
+  "pipeline::jenkins",
+  "delivery_build::default"
 )
 
 # Specify a custom source for a single cookbook:
 # cookbook "development_cookbook", path: "../cookbooks/development_cookbook"
 
-cookbook 'pipeline_test', path: '../test/fixtures/cookbooks/pipeline_test'
+cookbook 'pipeline_test', path: 'test/fixtures/cookbooks/pipeline_test'
+cookbook 'delivery_build', git: 'https://github.com/chef-cookbooks/delivery_build.git'
 
 # - recipe[pipeline_test]
 # - recipe[emacs]

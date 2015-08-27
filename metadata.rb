@@ -6,6 +6,6 @@ description 'Installs/Configures a Jenkins based chef delivery pipeline'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '2.3.2'
 
-%w( apt yum git java jenkins emacs sudo chef-ingredient ).each do |cb|
+%w( apt yum git java jenkins emacs sudo delivery_build ).each do |cb|
   depends cb
 end

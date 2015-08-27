@@ -1,29 +1,40 @@
 {
-  "revision_id": "2ccac9ba235af1d940e004b75dd089f719edeb943c72616960951b5e10527b5b",
+  "revision_id": "5f7ea03a2e452899be8dd47bd785e6b2e070184c6ee09693aa17cbd3efb6fab9",
   "name": "pipeline",
   "run_list": [
-    "recipe[pipeline::chefdk]",
-    "recipe[pipeline::jenkins]"
+    "recipe[pipeline::jenkins]",
+    "recipe[delivery_build::default]"
   ],
   "cookbook_locks": {
     "pipeline_test": {
       "version": "0.1.0",
       "identifier": "fc51b06ae69a591ad3315a216129fd0952854a4e",
       "dotted_decimal_identifier": "71021512280676953.7550558313472297.278216481000014",
-      "source": "../test/fixtures/cookbooks/pipeline_test",
+      "source": "test/fixtures/cookbooks/pipeline_test",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": "git@github.com:chef-solutions/pipeline.git",
-        "revision": "96a95af46846e05543a1342a1f79ef9a6a05599b",
+        "remote": null,
+        "revision": "4561e87cad10350666dd34d0cb9b3cf633822168",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
-          "origin/policyfile_update"
+          "origin/add-delivery-config"
         ]
       },
       "source_options": {
-        "path": "../test/fixtures/cookbooks/pipeline_test"
+        "path": "test/fixtures/cookbooks/pipeline_test"
+      }
+    },
+    "delivery_build": {
+      "version": "0.2.13",
+      "identifier": "3018f481fec7bbe1864265f3c5bb3daae6842730",
+      "dotted_decimal_identifier": "13538237314156475.63479489496335803.67804221155120",
+      "cache_key": "delivery_build-720e5316ea1791e3eb5a0e85e867dba1f12e782f",
+      "origin": "https://github.com/chef-cookbooks/delivery_build.git",
+      "source_options": {
+        "git": "https://github.com/chef-cookbooks/delivery_build.git",
+        "revision": "720e5316ea1791e3eb5a0e85e867dba1f12e782f"
       }
     },
     "pipeline": {
@@ -35,6 +46,39 @@
       "source_options": {
         "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/pipeline/versions/2.3.0/download",
         "version": "2.3.0"
+      }
+    },
+    "git": {
+      "version": "4.3.3",
+      "identifier": "13c160a164e78f56fc828c70f61e21dca58f0113",
+      "dotted_decimal_identifier": "5560645326268303.24484485629277726.37231554134291",
+      "cache_key": "git-4.3.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/4.3.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/4.3.3/download",
+        "version": "4.3.3"
+      }
+    },
+    "packagecloud": {
+      "version": "0.0.19",
+      "identifier": "912585367b76ead442039a57797ba4e4ada63d4d",
+      "dotted_decimal_identifier": "40855125697984234.59745278304418171.181302072851789",
+      "cache_key": "packagecloud-0.0.19-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/packagecloud/versions/0.0.19/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/packagecloud/versions/0.0.19/download",
+        "version": "0.0.19"
+      }
+    },
+    "build-essential": {
+      "version": "2.2.3",
+      "identifier": "2a00a41fe9a05349895c7d40a2c7f33fe889a1f8",
+      "dotted_decimal_identifier": "11822653931888723.20698703631262407.267455809823224",
+      "cache_key": "build-essential-2.2.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/2.2.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/2.2.3/download",
+        "version": "2.2.3"
       }
     },
     "apt": {
@@ -57,17 +101,6 @@
       "source_options": {
         "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/3.6.3/download",
         "version": "3.6.3"
-      }
-    },
-    "git": {
-      "version": "4.3.3",
-      "identifier": "13c160a164e78f56fc828c70f61e21dca58f0113",
-      "dotted_decimal_identifier": "5560645326268303.24484485629277726.37231554134291",
-      "cache_key": "git-4.3.3-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/4.3.3/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/4.3.3/download",
-        "version": "4.3.3"
       }
     },
     "java": {
@@ -136,17 +169,6 @@
         "version": "3.1.0"
       }
     },
-    "build-essential": {
-      "version": "2.2.3",
-      "identifier": "2a00a41fe9a05349895c7d40a2c7f33fe889a1f8",
-      "dotted_decimal_identifier": "11822653931888723.20698703631262407.267455809823224",
-      "cache_key": "build-essential-2.2.3-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/2.2.3/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/2.2.3/download",
-        "version": "2.2.3"
-      }
-    },
     "dmg": {
       "version": "2.2.2",
       "identifier": "c12c3679da96e28fded51522c4b886eea74fff0b",
@@ -167,17 +189,6 @@
       "source_options": {
         "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/runit/versions/1.7.2/download",
         "version": "1.7.2"
-      }
-    },
-    "packagecloud": {
-      "version": "0.0.19",
-      "identifier": "912585367b76ead442039a57797ba4e4ada63d4d",
-      "dotted_decimal_identifier": "40855125697984234.59745278304418171.181302072851789",
-      "cache_key": "packagecloud-0.0.19-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/packagecloud/versions/0.0.19/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/packagecloud/versions/0.0.19/download",
-        "version": "0.0.19"
       }
     },
     "windows": {
@@ -227,8 +238,24 @@
         ">= 0.0.0"
       ],
       [
+        "delivery_build",
+        ">= 0.0.0"
+      ],
+      [
         "pipeline",
         "= 2.3.0"
+      ],
+      [
+        "git",
+        "= 4.3.3"
+      ],
+      [
+        "packagecloud",
+        "= 0.0.19"
+      ],
+      [
+        "build-essential",
+        "= 2.2.3"
       ],
       [
         "apt",
@@ -237,10 +264,6 @@
       [
         "yum",
         "= 3.6.3"
-      ],
-      [
-        "git",
-        "= 4.3.3"
       ],
       [
         "java",
@@ -267,20 +290,12 @@
         "= 3.1.0"
       ],
       [
-        "build-essential",
-        "= 2.2.3"
-      ],
-      [
         "dmg",
         "= 2.2.2"
       ],
       [
         "runit",
         "= 1.7.2"
-      ],
-      [
-        "packagecloud",
-        "= 0.0.19"
       ],
       [
         "windows",
@@ -334,13 +349,21 @@
           ">= 0.0.0"
         ]
       ],
+      "delivery_build (0.2.13)": [
+        [
+          "git",
+          ">= 0.0.0"
+        ],
+        [
+          "packagecloud",
+          ">= 0.0.0"
+        ],
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ]
+      ],
       "pipeline_test (0.1.0)": [
-
-      ],
-      "apt (2.8.2)": [
-
-      ],
-      "yum (3.6.3)": [
 
       ],
       "git (4.3.3)": [
@@ -360,6 +383,18 @@
           "yum-epel",
           ">= 0.0.0"
         ]
+      ],
+      "packagecloud (0.0.19)": [
+
+      ],
+      "build-essential (2.2.3)": [
+
+      ],
+      "apt (2.8.2)": [
+
+      ],
+      "yum (3.6.3)": [
+
       ],
       "java (1.35.0)": [
 
@@ -396,9 +431,6 @@
           "~> 2.2"
         ]
       ],
-      "build-essential (2.2.3)": [
-
-      ],
       "dmg (2.2.2)": [
 
       ],
@@ -407,9 +439,6 @@
           "packagecloud",
           ">= 0.0.0"
         ]
-      ],
-      "packagecloud (0.0.19)": [
-
       ],
       "windows (1.38.1)": [
         [
