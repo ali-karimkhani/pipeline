@@ -18,7 +18,7 @@ run_list(
 # Specify a custom source for a single cookbook:
 # cookbook "development_cookbook", path: "../cookbooks/development_cookbook"
 
-cookbook 'pipeline_test', path: 'test/fixtures/cookbooks/pipeline_test'
+cookbook 'pipeline_test', path: '../test/fixtures/cookbooks/pipeline_test'
 
 # - recipe[pipeline_test]
 # - recipe[emacs]

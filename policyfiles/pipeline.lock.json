@@ -10,12 +10,12 @@
       "version": "0.1.0",
       "identifier": "fc51b06ae69a591ad3315a216129fd0952854a4e",
       "dotted_decimal_identifier": "71021512280676953.7550558313472297.278216481000014",
-      "source": "test/fixtures/cookbooks/pipeline_test",
+      "source": "../test/fixtures/cookbooks/pipeline_test",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:chef-solutions/pipeline.git",
-        "revision": "052fde21ad2e81a32bc14d2764905c5ffb7f1543",
+        "revision": "96a95af46846e05543a1342a1f79ef9a6a05599b",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -23,7 +23,7 @@
         ]
       },
       "source_options": {
-        "path": "test/fixtures/cookbooks/pipeline_test"
+        "path": "../test/fixtures/cookbooks/pipeline_test"
       }
     },
     "pipeline": {
