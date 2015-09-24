@@ -21,6 +21,4 @@
 # limitations under the License.
 #
 
-%w(
-  # see .kitchen.yml for usage
-).each { |recipe_name| include_recipe recipe_name }
+# see .kitchen.yml for usage

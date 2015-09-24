@@ -7,7 +7,8 @@ default_source :community
 # run_list: chef-client will run these recipes in the order specified.
 run_list(
   'pipeline::jenkins',
-  'delivery_build::default'
+  'delivery_build::default',
+  'pipeline::supermarket_job'
 )
 
 # Specify a custom source for a single cookbook:
@@ -15,6 +16,7 @@ run_list(
 
 cookbook 'pipeline_test', path: 'test/fixtures/cookbooks/pipeline_test'
 cookbook 'delivery_build', git: 'https://github.com/chef-cookbooks/delivery_build.git'
+cookbook 'pipeline', path: './'
 
 # - recipe[pipeline_test]
 # - recipe[emacs]
