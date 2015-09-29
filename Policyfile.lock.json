@@ -1,11 +1,12 @@
 {
-  "revision_id": "d41f409f1f9f8b571a77be85fa65ae24dbf96b2a8e4b9c4f1210da3a23dd4d0b",
+  "revision_id": "6beac43864cce0173dd85e392194fd66421dd2db5c51f88bd7169581ab6fef1d",
   "name": "pipeline",
   "run_list": [
     "recipe[git::default]",
     "recipe[pipeline::jenkins]",
     "recipe[pipeline::chefdk]",
     "recipe[pipeline::knife]",
+    "recipe[pipeline::delivery-cli]",
     "recipe[pipeline::supermarket_job]"
   ],
   "cookbook_locks": {
@@ -17,8 +18,8 @@
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": "58704949c5a294c330cce164edf229fbcb432475",
+        "remote": "git@github.com:chef-solutions/pipeline.git",
+        "revision": "6d51b9cd42321841594cc4d5f251493f587c24ca",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -42,14 +43,14 @@
     },
     "pipeline": {
       "version": "2.3.2",
-      "identifier": "bcf958a18eb478f70d903d7a63154e20af74ae23",
-      "dotted_decimal_identifier": "53191454684525688.69539232405414677.85902289579555",
+      "identifier": "1c1e96e89ef8e975a58b3cd2662dd9dd1380628c",
+      "dotted_decimal_identifier": "7914932844558569.33114589714605613.239543538180748",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": "58704949c5a294c330cce164edf229fbcb432475",
+        "remote": "git@github.com:chef-solutions/pipeline.git",
+        "revision": "6d51b9cd42321841594cc4d5f251493f587c24ca",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -465,40 +466,6 @@
           ">= 0.0.0"
         ]
       ],
-      "pipeline (2.3.2)": [
-        [
-          "apt",
-          ">= 0.0.0"
-        ],
-        [
-          "yum",
-          ">= 0.0.0"
-        ],
-        [
-          "git",
-          ">= 0.0.0"
-        ],
-        [
-          "java",
-          ">= 0.0.0"
-        ],
-        [
-          "jenkins",
-          ">= 0.0.0"
-        ],
-        [
-          "emacs",
-          ">= 0.0.0"
-        ],
-        [
-          "sudo",
-          ">= 0.0.0"
-        ],
-        [
-          "chef-ingredient",
-          ">= 0.0.0"
-        ]
-      ],
       "pipeline_test (0.1.0)": [
 
       ],
@@ -676,6 +643,40 @@
       ],
       "chef_handler (1.2.0)": [
 
+      ],
+      "pipeline (2.3.2)": [
+        [
+          "apt",
+          ">= 0.0.0"
+        ],
+        [
+          "yum",
+          ">= 0.0.0"
+        ],
+        [
+          "git",
+          ">= 0.0.0"
+        ],
+        [
+          "java",
+          ">= 0.0.0"
+        ],
+        [
+          "jenkins",
+          ">= 0.0.0"
+        ],
+        [
+          "emacs",
+          ">= 0.0.0"
+        ],
+        [
+          "sudo",
+          ">= 0.0.0"
+        ],
+        [
+          "chef-ingredient",
+          ">= 0.0.0"
+        ]
       ]
     }
   }

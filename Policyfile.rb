@@ -10,6 +10,7 @@ run_list(
   'pipeline::jenkins',
   'pipeline::chefdk',
   'pipeline::knife',
+  'pipeline::delivery-cli',
   'pipeline::supermarket_job'
 )
 
