@@ -7,7 +7,8 @@ default_source :community
 # run_list: chef-client will run these recipes in the order specified.
 run_list(
   'pipeline::jenkins',
-  'delivery_build::default',
+  'pipeline::knife',
+  'pipeline::chefdk',
   'pipeline::supermarket_job'
 )
 

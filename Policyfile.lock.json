@@ -1,9 +1,10 @@
 {
-  "revision_id": "d537db685c75c5ab7a7581a74468b86d3eb4b9f8e251bcd069bc095a7ca8c2eb",
+  "revision_id": "5112b89155f64d6a67f9842d3739fd4e9d46ecd42908854be8fb21aa045a6c58",
   "name": "pipeline",
   "run_list": [
     "recipe[pipeline::jenkins]",
-    "recipe[delivery_build::default]",
+    "recipe[pipeline::knife]",
+    "recipe[pipeline::chefdk]",
     "recipe[pipeline::supermarket_job]"
   ],
   "cookbook_locks": {
@@ -15,8 +16,8 @@
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": "git@github.com:chef-solutions/pipeline.git",
-        "revision": "d914b1fc242f6af94703314c9f82a42bbb919788",
+        "remote": null,
+        "revision": "efcdcbde638a9f6c65f996784ae857b8c07f6608",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -28,26 +29,26 @@
       }
     },
     "delivery_build": {
-      "version": "0.2.22",
-      "identifier": "10f24594044807a097d05573321a871d9a7fbaec",
-      "dotted_decimal_identifier": "4769980277344263.45202917316309530.148561215863532",
-      "cache_key": "delivery_build-f62a34da183a1be43a00c60edb1b79f8998d8e03",
+      "version": "0.3.0",
+      "identifier": "a1c84050fcf6c94656db91c229434232d7735bed",
+      "dotted_decimal_identifier": "45537649812633289.19798749412993347.72786130459629",
+      "cache_key": "delivery_build-98eb0ec72e2c9111b2bf477da9bfdf3eff62748c",
       "origin": "https://github.com/chef-cookbooks/delivery_build.git",
       "source_options": {
         "git": "https://github.com/chef-cookbooks/delivery_build.git",
-        "revision": "f62a34da183a1be43a00c60edb1b79f8998d8e03"
+        "revision": "98eb0ec72e2c9111b2bf477da9bfdf3eff62748c"
       }
     },
     "pipeline": {
       "version": "2.3.2",
-      "identifier": "805828ca6526f0a4270596efde96a62343bae1a2",
-      "dotted_decimal_identifier": "36125729236526832.46204801141169814.182670390387106",
+      "identifier": "40bc2092717f644ac2c7e041f0e7af797266878d",
+      "dotted_decimal_identifier": "18221246591369060.21043311993286887.192936145225613",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": "git@github.com:chef-solutions/pipeline.git",
-        "revision": "d914b1fc242f6af94703314c9f82a42bbb919788",
+        "remote": null,
+        "revision": "efcdcbde638a9f6c65f996784ae857b8c07f6608",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -135,6 +136,17 @@
         "version": "2.7.2"
       }
     },
+    "chef-ingredient": {
+      "version": "0.11.3",
+      "identifier": "37314ae88225ba8a4c087a794841ae36ade1d545",
+      "dotted_decimal_identifier": "15535321517270458.38927146084288577.191549868725573",
+      "cache_key": "chef-ingredient-0.11.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-ingredient/versions/0.11.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-ingredient/versions/0.11.3/download",
+        "version": "0.11.3"
+      }
+    },
     "packagecloud": {
       "version": "0.1.0",
       "identifier": "860429f5a51398133c1465237ddfeb0f256e8e08",
@@ -202,25 +214,14 @@
       }
     },
     "windows": {
-      "version": "1.38.1",
-      "identifier": "7d294359db7db3df7531df602de34d099ed18185",
-      "dotted_decimal_identifier": "35229741335936435.62897776867945955.84703714574725",
-      "cache_key": "windows-1.38.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/1.38.1/download",
+      "version": "1.38.2",
+      "identifier": "949516da2c99eaae7abfbac0630073063697f6e2",
+      "dotted_decimal_identifier": "41822221935352298.49111609838166784.126470522926818",
+      "cache_key": "windows-1.38.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/1.38.2/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/1.38.1/download",
-        "version": "1.38.1"
-      }
-    },
-    "chef-ingredient": {
-      "version": "0.11.3",
-      "identifier": "37314ae88225ba8a4c087a794841ae36ade1d545",
-      "dotted_decimal_identifier": "15535321517270458.38927146084288577.191549868725573",
-      "cache_key": "chef-ingredient-0.11.3-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-ingredient/versions/0.11.3/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-ingredient/versions/0.11.3/download",
-        "version": "0.11.3"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/1.38.2/download",
+        "version": "1.38.2"
       }
     },
     "apt-chef": {
@@ -372,6 +373,10 @@
         "= 2.7.2"
       ],
       [
+        "chef-ingredient",
+        "= 0.11.3"
+      ],
+      [
         "packagecloud",
         "= 0.1.0"
       ],
@@ -397,11 +402,7 @@
       ],
       [
         "windows",
-        "= 1.38.1"
-      ],
-      [
-        "chef-ingredient",
-        "= 0.11.3"
+        "= 1.38.2"
       ],
       [
         "apt-chef",
@@ -441,7 +442,10 @@
       ]
     ],
     "dependencies": {
-      "delivery_build (0.2.22)": [
+      "pipeline_test (0.1.0)": [
+
+      ],
+      "delivery_build (0.3.0)": [
         [
           "git",
           ">= 0.0.0"
@@ -466,9 +470,6 @@
           "push-jobs",
           ">= 0.0.0"
         ]
-      ],
-      "pipeline_test (0.1.0)": [
-
       ],
       "apt (2.8.2)": [
 
@@ -516,6 +517,16 @@
       ],
       "sudo (2.7.2)": [
 
+      ],
+      "chef-ingredient (0.11.3)": [
+        [
+          "apt-chef",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-chef",
+          ">= 0.0.0"
+        ]
       ],
       "packagecloud (0.1.0)": [
 
@@ -576,19 +587,9 @@
           ">= 0.0.0"
         ]
       ],
-      "windows (1.38.1)": [
+      "windows (1.38.2)": [
         [
           "chef_handler",
-          ">= 0.0.0"
-        ]
-      ],
-      "chef-ingredient (0.11.3)": [
-        [
-          "apt-chef",
-          ">= 0.0.0"
-        ],
-        [
-          "yum-chef",
           ">= 0.0.0"
         ]
       ],
@@ -663,11 +664,11 @@
           ">= 0.0.0"
         ],
         [
-          "delivery_build",
+          "sudo",
           ">= 0.0.0"
         ],
         [
-          "sudo",
+          "chef-ingredient",
           ">= 0.0.0"
         ]
       ]
