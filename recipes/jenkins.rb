@@ -20,7 +20,6 @@
 
 include_recipe 'java'
 include_recipe 'jenkins::master'
-include_recipe 'git'
 
 jenkins_command 'safe-restart' do
   action :nothing

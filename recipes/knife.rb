@@ -44,4 +44,28 @@ chef_orgs.each do |org|
     group node['jenkins']['master']['group']
     mode 0644
   end
+
+
+
+  root = '/etc/chef'
+
+  directory root do
+    mode 0755
+    recursive true
+  end
+
+  template "#{root}/client.rb" do
+    cookbook 'pipeline'
+    source 'knife.rb.erb'
+    mode 0644
+    variables(
+      chef_server_url: org['chef_server_url'],
+      client_node_name: 'client'
+    )
+  end
+
+  file "#{root}/client.pem" do
+    content org['pem']
+    mode 0644
+  end
 end

@@ -6,9 +6,10 @@ default_source :community
 
 # run_list: chef-client will run these recipes in the order specified.
 run_list(
+  'git',
   'pipeline::jenkins',
-  'pipeline::knife',
   'pipeline::chefdk',
+  'pipeline::knife',
   'pipeline::supermarket_job'
 )
 
@@ -26,3 +27,5 @@ cookbook 'pipeline', path: './'
 # - recipe[chef-zero]
 # - recipe[pipeline::knife]
 # - recipe[pipeline::jobs]
+
+default['pipeline']['chef-repo']['url'] = 'https://github.com/eeyun/chef_repo_demo.git'

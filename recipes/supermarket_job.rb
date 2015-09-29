@@ -10,7 +10,7 @@ else
         source "job-config.xml.erb"
          variables(
            :git_url => repo['url'],
-           :build_command => '_knife_commands.sh.erb'
+           :build_command => '_supermarket_command.sh.erb'
          )
       end
 
@@ -59,8 +59,10 @@ else
           end
         end
       rescue Exception => e
-      Chef::Log.error("Error reading Policyfile: #{e.message}")
+        Chef::Log.error("Error reading Policyfile: #{e.message}")
       end
     end
   end
 end
+
+
