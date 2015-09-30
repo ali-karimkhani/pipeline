@@ -31,7 +31,6 @@ suites:
   - name: pipeline
     run_list:
       - recipe[pipeline_test]
-      - recipe[emacs]
       - recipe[pipeline::jenkins]
       - recipe[pipeline::chefdk]
       - recipe[chef-zero]
