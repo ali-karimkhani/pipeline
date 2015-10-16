@@ -23,7 +23,7 @@ module Pipeline
     def cookbooks_in_berksfile_of_repo(name)
       require 'berkshelf'
       berksfile_from_repo(name).list.reject do |cookbook|
-        cookbook.location.nil?
+        cookbook.location.nil? || !cookbook.location.is_a?(Berkshelf::GitLocation)
       end
     rescue LoadError
       Chef::Log.warn 'Berkshelf not available'
