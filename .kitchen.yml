@@ -42,3 +42,12 @@ suites:
       pipeline:
         template:
           cookbook: pipeline_test
+
+  - name: provisioner
+    run_list:
+      - recipe[pipeline::jenkins]
+      # - recipe[pipeline::jenkins_auth]
+    attributes:
+      pipeline:
+        jenkins:
+          plugins: []

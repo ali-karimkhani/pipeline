@@ -7,6 +7,8 @@ default['pipeline']['jenkins']['plugins'] = %w(
   chef-identity
 )
 
+default['pipeline']['jenkins']['auth'] = false
+
 # use chef-zero url for default
 default['pipeline']['chef_server']['url'] = 'http://0.0.0.0:80'
 default['pipeline']['chef_server']['node_name'] = 'pipeline'
