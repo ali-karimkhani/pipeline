@@ -1,14 +1,8 @@
 ---
 driver:
   name: vagrant
-
-driver_config:
-  network:
-    - ["forwarded_port", {guest: 8080, host: 9090, auto_correct: true}]
-    - ["private_network", {ip: "33.33.33.10"}]
-  customize:
-    memory: 2048
-    cpus: 2
+  ssh:
+    insert_key: false
 
 provisioner:
   name: chef_zero
@@ -19,7 +13,11 @@ platforms:
     run_list:
       - recipe[apt]
 
-  - name: centos-6.7
+  - name: ubuntu-16.04
+    run_list:
+      - recipe[apt]
+
+  - name: centos-6.8
     run_list:
       - recipe[yum]
 
@@ -45,9 +43,17 @@ suites:
 
   - name: provisioner
     run_list:
+      - recipe[pipeline_test::hostsfile]
       - recipe[pipeline::jenkins]
-      # - recipe[pipeline::jenkins_auth]
+      - recipe[pipeline::jenkins_auth]
+      - recipe[pipeline::jenkins_cert_fix]
+    driver:
+      network:
+        - ["private_network", {ip: "33.33.33.20"}]
+      customize:
+        memory: 2048
+        cpus: 2
     attributes:
       pipeline:
-        jenkins:
-          plugins: []
+        github:
+          server: 'gitlab.mycompany.com'

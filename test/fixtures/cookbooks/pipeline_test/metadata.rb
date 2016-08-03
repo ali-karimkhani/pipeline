@@ -5,3 +5,5 @@ license 'all_rights'
 description 'Installs/Configures pipeline_test'
 long_description 'Installs/Configures pipeline_test'
 version '0.1.0'
+
+depends 'hostsfile'

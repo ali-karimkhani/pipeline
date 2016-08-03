@@ -1,10 +1,12 @@
+default['jenkins']['master']['jvm_options'] = '-Djenkins.install.runSetupWizard=false'
+
 default['pipeline']['jenkins']['plugins'] = %w(
   scm-api
   git
   git-client
   github-api
   github
-  chef-identity
+  skip-certificate-check
 )
 
 default['pipeline']['jenkins']['auth'] = false
